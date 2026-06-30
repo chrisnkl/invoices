@@ -38,4 +38,5 @@ local.settings.json
 bin/
 obj/
 
-__azurite_db_
+__azurite_*
+AzuriteConfig
