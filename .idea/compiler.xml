@@ -18,6 +18,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="InvoiceFunction" target="25" />
       <module name="invoicefunction" target="25" />
     </bytecodeTargetLevel>
   </component>

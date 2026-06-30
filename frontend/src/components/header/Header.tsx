@@ -9,7 +9,6 @@ export default function Header() {
 
                 <Link to={"/upload"} className={"hover:text-sky-600"}>Upload</Link>
                 <Link to={"/retrieve"} className={"hover:text-sky-600"}>Download</Link>
-                <Link to={"/preview"} className={"hover:text-sky-600"}>Preview</Link>
 
             </nav>
         </header>

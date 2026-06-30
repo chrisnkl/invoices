@@ -2,7 +2,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 import HomePage from "./pages/home/HomePage.tsx";
 import Layout from "./layout/Layout.tsx";
-import ErrorPage from "@/pages/error/ErrorPage.tsx";
+import '@mantine/core/styles.css';
+import {MantineProvider} from "@mantine/core";
+import InvoiceUploadPage from "@/pages/upload/InvoiceUploadPage.tsx";
 
 export default function App() {
 
@@ -11,15 +13,23 @@ export default function App() {
       {
         path: "/",
         element: <Layout/>,
-        errorElement: <ErrorPage/>,
+        errorElement: <Layout isError={true}/>,
         children: [
-          {
-            index: true,
-            element: <HomePage/>
-          }
+            {
+                index: true,
+                element: <HomePage/>
+            },
+            {
+                path: "/upload",
+                element: <InvoiceUploadPage/>
+            }
         ]
       }
   ]);
 
-  return <RouterProvider router={router}/>
+  return (
+      <MantineProvider>
+        <RouterProvider router={router}/>
+      </MantineProvider>
+  );
 }

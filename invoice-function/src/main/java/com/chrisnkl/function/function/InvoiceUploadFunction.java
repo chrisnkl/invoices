@@ -24,7 +24,7 @@ public class InvoiceUploadFunction {
                     methods = {HttpMethod.POST},
                     authLevel = AuthorizationLevel.FUNCTION,
                     route = "invoices"
-            ) HttpRequestMessage<Optional<byte[]>> request, final ExecutionContext context) {
+            ) HttpRequestMessage<byte[]> request, final ExecutionContext context) {
 
         Tracker tracker = Tracker.create("upload-function-execution", context);
         try {
@@ -33,7 +33,7 @@ public class InvoiceUploadFunction {
             String fileName = request.getHeaders().getOrDefault(Headers.FILE_NAME.getName(), null);
 
             // Retrieve the content bytes
-            byte[] content = request.getBody().orElse(null);
+            byte[] content = request.getBody();
 
             // Convert to upload request and let domain driven behavior validate the record
             InvoiceUploadRequest uploadRequest = InvoiceUploadRequest.create(fileName, content);
@@ -57,7 +57,7 @@ public class InvoiceUploadFunction {
         }
     }
 
-    public HttpResponseMessage buildResponse(HttpRequestMessage<Optional<byte[]>> request, ApiResponse<?> response) {
+    public HttpResponseMessage buildResponse(HttpRequestMessage<byte[]> request, ApiResponse<?> response) {
         return request.createResponseBuilder(HttpStatus.valueOf(response.status()))
                 .header(Headers.CONTENT_TYPE.getName(), "application/json")
                 .body(response)
