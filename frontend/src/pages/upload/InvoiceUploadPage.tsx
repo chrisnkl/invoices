@@ -1,4 +1,4 @@
-import {Button, Container, FileInput, Loader, Paper, Title} from "@mantine/core";
+import {Alert, Button, Container, FileInput, Loader, Paper, Title} from "@mantine/core";
 import {useState} from "react";
 import {uploadInvoice} from "@/service/InvoiceUploadService.tsx";
 import type {UploadResponse} from "@/types/UploadResponse.tsx";
@@ -38,6 +38,9 @@ export default function InvoiceUploadPage() {
         <Container size="sm" py="xl">
             <Paper shadow="sm" p="xl" radius="md">
 
+                {error && <Alert color="red">{error}</Alert>}
+                {blobUrl && <Alert color={"green"}>Invoice uploaded successfully: {blobUrl}</Alert>}
+
                 <Title order={2}>
                     Upload Invoice
                 </Title>
@@ -61,10 +64,8 @@ export default function InvoiceUploadPage() {
 
                 onClick={handleUploadClick}
             >
-                Upload
+                {loading && <Loader />}Upload
             </Button>
-
-
             </Paper>
         </Container>
     );

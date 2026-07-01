@@ -8,7 +8,7 @@ export default function Header() {
             <nav className={"flex items-center justify-center space-x-4 uppercase text-sm font-medium text-sky-500"}>
 
                 <Link to={"/upload"} className={"hover:text-sky-600"}>Upload</Link>
-                <Link to={"/retrieve"} className={"hover:text-sky-600"}>Download</Link>
+                <Link to={"/download"} className={"hover:text-sky-600"}>Download</Link>
 
             </nav>
         </header>

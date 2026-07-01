@@ -5,6 +5,7 @@ import Layout from "./layout/Layout.tsx";
 import '@mantine/core/styles.css';
 import {MantineProvider} from "@mantine/core";
 import InvoiceUploadPage from "@/pages/upload/InvoiceUploadPage.tsx";
+import InvoiceDownloadPage from "@/pages/download/InvoiceDownloadPage.tsx";
 
 export default function App() {
 
@@ -22,6 +23,10 @@ export default function App() {
             {
                 path: "/upload",
                 element: <InvoiceUploadPage/>
+            },
+            {
+                path: "/download",
+                element: <InvoiceDownloadPage/>
             }
         ]
       }
